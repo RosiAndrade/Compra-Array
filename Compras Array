@@ -1,0 +1,47 @@
+//Rosilaine
+// Lista de compras armazenada em um array
+let listaDeCompras = [
+  "Arroz",
+  "Feijão",
+  "Macarrão",
+  "Leite",
+  "Pão",
+];
+
+// Função para acessar o item da lista pelo nome
+function buscarPorNome(nome) {
+  let resultado = listaDeCompras.filter(item => item.toLowerCase() === nome.toLowerCase());
+  if (resultado.length > 0) {
+    return `Item encontrado: ${resultado[0]}`;
+  } else {
+    return "Item não encontrado.";
+  }
+}
+
+// Função para acessar o item da lista pela posição
+function buscarPorPosicao(posicao) {
+  if (posicao >= 0 && posicao < listaDeCompras.length) {
+    return `Item na posição ${posicao + 1}: ${listaDeCompras[posicao]}`;
+  } else {
+    return "Posição inválida.";
+  }
+}
+
+// Função principal para interação com o usuário
+function gerenciarLista() {
+  let opcao = prompt("Escolha uma opção: 1 - Buscar por nome, 2 - Buscar por posição");
+
+  if (opcao == "1") {
+    let nome = prompt("Digite o nome do item que você deseja buscar:");
+    alert(buscarPorNome(nome));
+  } else if (opcao == "2") {
+    let posicao = prompt("Digite a posição do item (1 a " + listaDeCompras.length + "):");
+    posicao = parseInt(posicao) - 1; // Ajusta para o índice do array
+    alert(buscarPorPosicao(posicao));
+  } else {
+    alert("Opção inválida.");
+  }
+}
+
+// Chama a função principal
+gerenciarLista();
